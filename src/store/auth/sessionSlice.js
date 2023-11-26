@@ -10,10 +10,19 @@ const initialState = {
 export const sessionSilce = createSlice({
     name: 'auth/session',
     initialState,
-    reducers: {}
+    reducers: {
+        setSignInSuccess: (state, action) => {
+            state.signedIn = true
+            state.token = action.payload
+        },
+        setSignOutSuccess: (state, action) => {
+            state.signedIn = false
+            state.token = ''
+        },
+    }
 })
 
 
-export const { } = sessionSilce.actions
+export const { setSignInSuccess, setSignOutSuccess } = sessionSilce.actions
 
 export default sessionSilce.reducer
