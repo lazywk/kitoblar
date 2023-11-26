@@ -1,8 +1,9 @@
+import AllPages from "pages";
 
 function App() {
   return (
     <div className="App">
-      App
+      <AllPages />
     </div>
   );
 }
