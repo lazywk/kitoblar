@@ -1,8 +1,7 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
-import { isAuthenticated } from 'store'
 
-export default function AuthRoutes() {
+export default function AuthRoutes({isAuthenticated}) {
 
   if (isAuthenticated) {
     return <Navigate to={"/"} replace />
