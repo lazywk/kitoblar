@@ -3,7 +3,7 @@ import AuthRoutes from 'components/route/AuthRoutes'
 import CheckAuth from 'components/route/CheckAuth'
 import ProtectedRoutes from 'components/route/ProtectedRoutes'
 import { authRoutes, protectedRoutes } from 'configs/routes'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 
@@ -13,7 +13,7 @@ export default function AllPages() {
   const { role } = useSelector(state => state.user)
 
   return (
-    <div>
+    <Suspense fallback={<p>Loading...</p>}>
       <Routes>
         <Route path='/' element={<ProtectedRoutes isAuthenticated={signedIn} />}>
           {
@@ -31,6 +31,6 @@ export default function AllPages() {
         </Route>
         <Route path='*' element={<p>Not Found</p>} />
       </Routes>
-    </div>
+    </Suspense>
   )
 }
