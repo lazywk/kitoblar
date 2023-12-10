@@ -1,4 +1,5 @@
 export const API_ENDPOINTS = {
-    USERS: 'users'
+    REGISTER: 'register/',
+    LOGIN: 'signin/'
 }
 

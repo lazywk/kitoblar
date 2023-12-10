@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const accessTokenBook = localStorage.getItem('accessTokenBook')
 
 const initialState = {
-    token: '',
-    signedIn: false
+    token: accessTokenBook || '',
+    signedIn: accessTokenBook ? true : false
 }
 
 
@@ -14,6 +15,7 @@ export const sessionSilce = createSlice({
         setSignInSuccess: (state, action) => {
             state.signedIn = true
             state.token = action.payload
+            localStorage.setItem('accessTokenBook', action.payload)
         },
         setSignOutSuccess: (state, action) => {
             state.signedIn = false

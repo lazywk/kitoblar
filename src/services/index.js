@@ -5,12 +5,12 @@ import { setSignOutSuccess } from "store/auth/sessionSlice"
 
 const unAuthenticatedCode = ["403"]
 
-const BaseService = axios.create({
+const api = axios.create({
     timeout: 10000,
     baseURL: appConfig.apiPrefix
 })
 
-BaseService.interceptors.request.use(
+api.interceptors.request.use(
     (config) => {
         const stateData = store.getState()
 
@@ -24,7 +24,7 @@ BaseService.interceptors.request.use(
 )
 
 
-BaseService.interceptors.response.use(
+api.interceptors.response.use(
     (response) => response,
     (error) => {
         const { response } = error
@@ -38,4 +38,4 @@ BaseService.interceptors.response.use(
 )
 
 
-export default BaseService
+export default api
